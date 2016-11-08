@@ -1,0 +1,6 @@
+D:\vscode\readfile-v1\public\static\127001\04.png.featZMtxt	0
+D:\vscode\readfile-v1\public\static\127001\03.png.featZMtxt	0.13668
+D:\vscode\readfile-v1\public\static\127001\07.png.featZMtxt	0.399044
+D:\vscode\readfile-v1\public\static\127001\02.png.featZMtxt	0.859111
+D:\vscode\readfile-v1\public\static\127001\05.png.featZMtxt	0.97809
+D:\vscode\readfile-v1\public\static\127001\01.png.featZMtxt	1.09567

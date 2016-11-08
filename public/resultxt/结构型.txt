@@ -1,0 +1,6 @@
+D:\demo-image\01.png	0.627235
+D:\demo-image\02.png	0.730475
+D:\demo-image\03.png	0.806647
+D:\demo-image\04.png	0.989701
+D:\demo-image\05.png	0.770488
+D:\demo-image\07.png	0.999843

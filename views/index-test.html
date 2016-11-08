@@ -1,0 +1,72 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>首页</title>
+    </head>
+
+    <body>
+        <div class="show-files"></div>
+    </body>
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(function(){
+            $.get("/index", function (files) {
+                showHtml(files);
+            });
+        });
+
+        function getFiles (url) {
+            if ($("#now-url").text()) {
+                url = $("#now-url").text()+"\\"+url;
+            }
+            $.get("/index?url="+url, function (files) {
+                console.log(files);
+                showHtml(files);
+            });
+        }
+
+
+        function goback () {
+            if ($("#now-url").text()) {
+                var url = $("#now-url").text();
+            } 
+            $.get("/goback?url="+url, function (files) {
+                console.log(files);
+                showHtml(files);
+            });
+            
+        }
+
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg); //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+
+        function showHtml (files) {
+            var html = '';
+            if (files.nowUrl) {
+                html += "<a href='javascript:goback();'>../</a>";
+                html += "<h5>当前文件目录:<span id='now-url'>"+files.nowUrl+"</span></h5>";
+            }
+            file = files.allFiles;
+            if (file.length > 0) {
+                for (var i = 0; i < file.length; i++) {
+                    if (file[i].isfile) {
+                        var e = encodeURIComponent(file[i].path);
+                        html += "<h5><a href=javascript:getFiles('"+ e +"') >"+ file[i].path +"</a></h5>";
+                    } else {
+                        html += "<h5>"+ file[i].path +"</h5>";
+                    }
+                }
+            } else {
+                html += "<h4>没有任何子目录</h4>";
+            }
+            $(".show-files").html(null);
+            $(".show-files").html(html);
+        }
+    </script>
+</html>

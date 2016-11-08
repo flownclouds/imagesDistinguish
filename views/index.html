@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图像分类</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="head">
+        <img src="images/logo.png"/>
+        <span class="head-title">FRDC结构文档图像分类演示</span>
+    </div>
+    <div class="wrap">
+        <div class="left" number="0">
+            <div class="nav cf">
+                <div class="nav-goback">
+                    <a href="javascript:showHtml('/index')">全部文件</a>
+                </div>
+                <div class="nav-btns local-btns">
+                    <span class="list local-list"></span>
+                    <span class="thumbnail local-thumbnail active"></span>
+                    <span class="all-imgs active" onclick="javascript:getAllImgs()">所有图片</span>
+                </div>
+            </div>
+            <div class="content local-content cf"></div>
+            <div class="left-what"></div>
+        </div>
+        <div class="right">
+            <div class="nav cf">
+                <span class="sort-result" onclick="javascript: sortResult();" style="padding-left: 10px;">分类结果</span>
+                <div class="nav-btns img-btns">
+                    <span class="list img-list"></span>
+                    <span class="thumbnail img-thumbnail active"></span>
+                    <span class="img-search" onclick="javascript:imgSearch()">搜索</span>
+                    <select class="select-value">
+                        <option value="0.1">0.1</option>
+                        <option value="0.2">0.2</option>
+                        <option value="0.3">0.3</option>
+                        <option value="0.4">0.4</option>
+                        <option value="0.5" selected>0.5</option>
+                        <option value="0.6">0.6</option>
+                        <option value="0.7">0.7</option>
+                        <option value="0.8">0.8</option>
+                        <option value="0.9">0.9</option>
+                    </select>
+                </div>
+            </div>
+            <div class="content img-content"></div>
+        </div>
+        <div class="contextMenu"  id="m-menu">
+            <ul>
+                <li id="m-move">移动到</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="fullbg"></div>
+    <div class="cover-up"><progress id="prog" value="0" max="100"></progress><div id="numValue">0%</div></div>
+    <div class="img-enlarge"></div>
+    <div class="input-window">
+        <div class="input-content">
+            输入文件名:<input id="filename" type="text"/>
+            <input class="input-sure" type="button" value="确定" onclick="inputSure()"/>
+        </div>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.contextmenu.r2.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
