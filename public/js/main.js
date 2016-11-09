@@ -8,6 +8,7 @@ $(function () {
     var imgsurl = [];
     var shiftImg = [];
     window.shiftImg = [];
+    $(".right .img-btns").hide();
     // hover
     $('.content').on('mouseover', '.js-tr tr', function () {
         $('.js-tr tr').removeClass('hover');
@@ -134,6 +135,8 @@ $(function () {
             // showImgHtml2(window.fileInfo.collages);
             showImgHtml2(collages);
         }
+        $(".sort-result").addClass("nav-font");
+        $(".result-search").removeClass("nav-font");
     });
 
     // 双击图片放大
@@ -180,7 +183,20 @@ $(function () {
 
     // 非结构型的隐藏  显示
     $(".img-content").on("click", "#nonstructImg .list-close", function () {
-        if ($(this).text() == '显示') {
+        if ($("#nonstructImg .content-list").css("display") == "none") {
+            $(this).parent(".content-list-type").next("ul").show("slow");
+            $("#structImg").css("height", "50%");
+            $(this).text('隐藏');
+        } else {
+            $(this).parent(".content-list-type").next("ul").hide("slow");
+            $("#structImg").css("height", "calc(100% - 38px)");
+            $(this).text('显示');
+        }
+    });
+
+    // 搜索结果的隐藏和显示
+    $(".img-content").on("click", ".show-result .list-close", function () {
+        if ($(".img-content .result-list").css("display") == "none") {
             $(this).parent(".content-list-type").next("ul").show("slow");
             $("#structImg").css("height", "50%");
             $(this).text('隐藏');
@@ -413,6 +429,8 @@ function imgSort () {
             $('.img-deliver').css('cursor', 'default');
         }
     });
+    $(".right .img-btns").show();
+    $(".sort-result").addClass("nav-font");
 }
 
 var tempSearch ;
@@ -456,10 +474,18 @@ function imgSearch () {
 function sortResult (type) {
     if (type == 2) {
         $(".result-list, .show-result, #structImg").show();
-        $("#nonstructImg").hide();
+        $("#nonstructImg, #nonstructImg .content-list").hide();
+        $("#structImg").css("height", "50%");
+        $("#nonstructImg .list-close").text("隐藏");
+        $(".sort-result").removeClass("nav-font");
+        $(".result-search").addClass("nav-font");
     } else {
-        $(".result-list").hide();
-        $(".showimg").show();
+        $(".result-list, .show-result").hide();
+        $(".showimg, #nonstructImg .content-list").show();
+        $("#structImg").css("height", "50%");
+        $(".show-result .list-close").text("隐藏");
+        $(".result-search").removeClass("nav-font");
+        $(".sort-result").addClass("nav-font");
     }
 }
 
@@ -478,9 +504,12 @@ function inputSure () {
     }
     if (!$(".nav").children("span").hasClass("result-search")) {
         $(".sort-result").after(
-            '<span class="result-search" onclick="javascript: sortResult(2)" style="padding-left: 10px; cursor: pointer;">|&nbsp;&nbsp;搜索结果</span>'
+            '<span class="result-search" onclick="javascript: sortResult(2)" >搜索结果</span>'
             );
     }
+
+    $(".sort-result").removeClass("nav-font");
+    $(".result-search").addClass("nav-font");
 }
 
 
@@ -524,13 +553,13 @@ function searchBack() {
 
 // 显示搜索结果
 function searchResult () {
-    if (!$('.img-content').children('div').hasClass('result-search-img')) {
+    if (!$('.img-content').children('div').hasClass('show-result')) {
         var html = '<div class="show-result" style="height: calc(50%)"></div>';
          $('.img-content').append(html);
         // $("#structImg").after(html);
     }
 
-    var html2 = '<p class="content-list-type">搜索结果</p>' +
+    var html2 = '<p class="content-list-type">搜索结果 <span class="list-close">隐藏</span></p>' +
                         '<ul class="result-list result-dir cf" >';
     for (var i in searchFileName) {
         html2 += '<li class="search-dir">'+
@@ -824,9 +853,9 @@ function goback (type) {
     $('.all-imgs').css('cursor', 'pointer');
     $('.img-deliver').removeAttr('onclick').attr('onclick', 'javascript:imgSort();');
     $('.img-deliver').css('cursor', 'pointer');
-    $('.select-value').hide();
-    $('.img-search').hide();
+    $(".right .img-btns").hide();
     $(".result-search").remove();
+    $(".img-content").html(null);
     searchFileName = [];
 }
 
@@ -837,6 +866,12 @@ function getSys(type) {
     window.fileInfo.collages = [];
     showImgHtml(null);
     // showImgHtml2(null);
+    $('.img-deliver').removeAttr('onclick').attr('onclick', 'javascript:imgSort();');
+    $('.img-deliver').css('cursor', 'pointer');
+    $(".img-content").html(null);
+    $(".result-search").remove();
+    $(".right .img-btns").hide();
+    searchFileName = [];
 }
 
 // 图片拖动

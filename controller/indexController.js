@@ -255,7 +255,7 @@ main.imgSearch = (req, res) => {
     let url = 'public/static/'+getClientIP(req);
     let content = fs.readdirSync(url);
     for (let f in content) {
-        if (content[f].includes('.featZMtxt') && fs.statSync(url + '/' + content[f]).isFile()) {
+        if (content[f].includes('.featZM') && fs.statSync(url + '/' + content[f]).isFile()) {
             signal = false;
             break;
         }

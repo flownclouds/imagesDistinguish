@@ -65,4 +65,7 @@ ie { height: 100%; width: 0;  display:block; background:blue;}
 .img-search { color: #ffffff; background-color: #97cdfa; margin-right: 5px; display: none;}
 .select-value {float: right; margin-top: 5px; margin-right: 5px; display: none;}
 .input-window { width: calc(100%); height: calc(100%);background-color:rgba(0,0,0,0.6); text-align: center; left:0; position:absolute;  top:0;  z-index:3; display: none; }
-.input-content {margin-top: calc(25%); margin-left: calc((100% - 300px) / 2); width: 300px; padding-top: 20px; padding-bottom: 20px; background-color: #97cdfa; } 
+.input-content {margin-top: calc(25%); margin-left: calc((100% - 300px) / 2); width: 300px; padding-top: 20px; padding-bottom: 20px; background-color: #97cdfa; }
+.nav-font {background-color: #97cdfa; border-radius: 4px; color: white;} 
+.sort-result {padding-left: 10px; padding-right: 10px; display: block;}
+.result-search {padding-left: 10px; padding-right: 10px;  cursor: pointer; display: block;}
