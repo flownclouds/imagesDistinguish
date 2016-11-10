@@ -251,6 +251,7 @@ main.imgSearch = (req, res) => {
     if (req.query.url) {
         imgUrl = path.resolve(__dirname, '../') + '\\public' + req.query.url.trim();
     }
+    // console.log(unescape(req.query.url));
     // 判断是否生成过特征文件
     let url = 'public/static/'+getClientIP(req);
     let content = fs.readdirSync(url);
@@ -299,7 +300,7 @@ function searchEXE (imgUrl, imgValue) {
     let searchExePath = sourceExePath + '\\Test1ReadFeatFilesAndRetrieval.exe';
     let resultNum = resultPath + '\\searchNum.txt';
     return new Promise((resolve, reject) => {
-        let exe = exec(searchExePath + ' ' + imgAllUrl + ' ' + imgUrl + ' ' + imgValue + ' ' + resultSearch + ' ' + resultNum);
+        let exe = exec(searchExePath + ' ' + imgAllUrl + ' "' + imgUrl + '" ' + imgValue + ' ' + resultSearch + ' ' + resultNum);
         exe.stdout.on('data', function(data) {
             console.log(data);
         });

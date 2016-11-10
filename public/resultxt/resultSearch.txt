@@ -1,6 +1,6 @@
-D:\vscode\readfile-v1\public\static\127001\03.png.featZM	0
-D:\vscode\readfile-v1\public\static\127001\01.png.featZM	0.24489
-D:\vscode\readfile-v1\public\static\127001\04.png.featZM	0.317072
-D:\vscode\readfile-v1\public\static\127001\05.png.featZM	0.366961
-D:\vscode\readfile-v1\public\static\127001\02.png.featZM	0.378175
-D:\vscode\readfile-v1\public\static\127001\07.png.featZM	1.05436
+D:\vscode\readfile-v1\public\static\127001\05.png.featZM	0
+D:\vscode\readfile-v1\public\static\127001\02.png.featZM	0.0293812
+D:\vscode\readfile-v1\public\static\127001\01.png.featZM	0.140676
+D:\vscode\readfile-v1\public\static\127001\04.png.featZM	0.189748
+D:\vscode\readfile-v1\public\static\127001\03.png.featZM	0.366961
+D:\vscode\readfile-v1\public\static\127001\07.png.featZM	1.14758

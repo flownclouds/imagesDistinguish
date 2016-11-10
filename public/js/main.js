@@ -445,7 +445,7 @@ function imgSearch () {
         alert('请选择一张目标图片！');
         return false;
     }
-
+    imgUrl = escape(imgUrl);
     $(".input-window #filename").val($('#' + allSelect[0].id).children('.li-wrap').children('p').text() + '-' + imgValue);
     $.ajax({
         url: '/imgSearch?r=' + Math.random() + '&url=' + imgUrl + '&value=' + imgValue,
@@ -476,14 +476,14 @@ function sortResult (type) {
         $(".result-list, .show-result, #structImg").show();
         $("#nonstructImg, #nonstructImg .content-list").hide();
         $("#structImg").css("height", "50%");
-        $("#nonstructImg .list-close").text("隐藏");
+        $(".show-result .list-close").text("隐藏");
         $(".sort-result").removeClass("nav-font");
         $(".result-search").addClass("nav-font");
     } else {
         $(".result-list, .show-result").hide();
         $(".showimg, #nonstructImg .content-list").show();
         $("#structImg").css("height", "50%");
-        $(".show-result .list-close").text("隐藏");
+        $("#nonstructImg .list-close").text("隐藏");
         $(".result-search").removeClass("nav-font");
         $(".sort-result").addClass("nav-font");
     }
@@ -492,6 +492,7 @@ function sortResult (type) {
 // 输入框的信息确认
 function inputSure () {
     var fileName = $(".input-content #filename").val();
+    var display = $(".show-result .result-list").css("display");
     if (fileName) {
         searchFileName.push(fileName);
         resultSearchStorage.setItem(fileName, JSON.stringify(tempSearch));
@@ -501,6 +502,17 @@ function inputSure () {
         $("#nonstructImg").hide();
         searchResult();
         tempSearch = null;
+        // 隐藏显示
+        if (display == "none" && $(".result-search").hasClass("nav-font")) {
+            $(".show-result .result-list").hide();
+            $("#structImg").css("height", "calc(100% - 38px)");
+            $(".show-result .list-close").text("显示");
+        } else {
+            $(".result-list, .show-result, #structImg").show();
+            $("#nonstructImg, #nonstructImg .content-list").hide();
+            $("#structImg").css("height", "50%");
+            $(".show-result .list-close").text("隐藏");
+        }
     }
     if (!$(".nav").children("span").hasClass("result-search")) {
         $(".sort-result").after(

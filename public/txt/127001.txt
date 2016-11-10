@@ -1,7 +1,0 @@
-D:\demo-image\01.png
-D:\demo-image\02.png
-D:\demo-image\03.png
-D:\demo-image\04.png
-D:\demo-image\05.png
-D:\demo-image\06.png
-D:\demo-image\07.png
